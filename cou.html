@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy New Year ❤️</title>
+
+<style>
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle at center, #000010, #000000 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    color: white;
+    position: relative;
+}
+
+/* ================= WAVE LINES ================= */
+.wave-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.wave-lines svg {
+    width: 200%;
+    height: 100%;
+    animation: waveMove 12s linear infinite;
+}
+
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.wave-lines svg {
+    width: 200%;
+    height: 100%;
+    animation: waveMove 12s linear infinite, waveRotate 40s linear infinite;
+    transform-origin: center;
+}
+
+/* ================= RIBBONS ================= */
+.ribbon {
+    position: absolute;
+    width: 250px;            /* Ribbon length */
+    height: 10px;            /* Ribbon thickness */
+    background: linear-gradient(
+        90deg,
+        #ff5edf, #ff9ad5, #ffd6f6, #ffb347
+    );                       /* Gradient colors */
+    border-radius: 5px;      /* Rounded edges */
+    opacity: 0.8;            /* Semi-transparent */
+    top: 50%;                /* Default vertical position */
+    left: -300px;            /* Start off-screen */
+    animation: ribbonMove 6s linear infinite;
+}
+
+/* Individual ribbon variations */
+.ribbon1 { top: 25%; animation-delay: 0s; transform: rotate(-25deg); }
+.ribbon2 { top: 50%; animation-delay: 2s; transform: rotate(15deg); }
+.ribbon3 { top: 70%; animation-delay: 4s; transform: rotate(-10deg); }
+
+/* Ribbon animation */
+@keyframes ribbonMove {
+    0%   { left: -300px; }
+    50%  { left: 110%; }
+    100% { left: -300px; }
+}
+
+/* ================= MOBILE ADJUSTMENTS ================= */
+@media(max-width:600px){
+    .ribbon { width: 180px; height: 6px; }
+    .ribbon1 { top: 20%; }
+    .ribbon2 { top: 45%; }
+    .ribbon3 { top: 70%; }
+}
+
+/* ================= HEART GLASS ================= */
+.glass-heart {
+    position: relative;
+    width: 340px;
+    height: 320px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,105,180,0.45),
+        rgba(138,43,226,0.35)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transform: rotate(-45deg);
+    border-radius: 22px;
+    box-shadow:
+        0 0 60px rgba(255,105,180,0.7),
+        inset 0 0 20px rgba(255,255,255,0.25);
+    animation: heartBeat 1.5s infinite;
+    z-index: 2;
+}
+
+/* Heart circles */
+.glass-heart::before,
+.glass-heart::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 320px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,105,180,0.45),
+        rgba(138,43,226,0.35)
+    );
+    backdrop-filter: blur(18px);
+    border-radius: 50%;
+    box-shadow: inset 0 0 18px rgba(255,255,255,0.25);
+}
+
+.glass-heart::before { top: -160px; left: 0; }
+.glass-heart::after { top: 0; left: 160px; }
+
+/* ================= CONTENT ================= */
+.content {
+    position: absolute;
+    inset: 0;
+    transform: rotate(45deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    letter-spacing: 1.5px;
+    animation: glow 2s infinite alternate;
+}
+
+.names {
+    font-size: 18px;
+    color: #ffd6f6;
+    margin: 4px 0 10px;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(255,182,193,0.8);
+    line-height: 1.2;
+}
+
+p.message {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #fff0f8;
+    max-width: 260px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+/* ================= INNER HEART ================= */
+.inner-heart {
+    position: relative;
+    width: 160px;
+    height: 145px;
+    margin-top: 12px;
+    transform: rotate(-45deg);
+}
+
+.inner-heart::before,
+.inner-heart::after,
+.inner-heart .inner-body {
+    position: absolute;
+    content: "";
+    width: 160px;
+    height: 145px;
+    background: linear-gradient(135deg, #ff0844, #ff6a88);
+    border-radius: 50%;
+    box-shadow:
+        0 0 25px rgba(255,0,76,0.8),
+        inset 0 0 15px rgba(255,255,255,0.3);
+}
+
+.inner-heart::before { top: -72px; left: 0; }
+.inner-heart::after { top: 0; left: 72px; }
+.inner-heart .inner-body { border-radius: 20px; }
+
+/* ================= IMAGES ================= */
+.images {
+    position: absolute;
+    top: 32px;
+    left: 18px;
+    transform: rotate(45deg);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.images img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 0 12px white;
+}
+.demo{
+    position:absolute;
+    top:98px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:28px;
+    font-family:'Brush Script MT', cursive;
+    color:#fff;
+
+    text-shadow:
+        0 0 8px #fff,
+        0 0 18px #ff9ad5,
+        0 0 35px #ff5edf;
+
+    z-index:10;
+    animation: demoFloat 3s ease-in-out infinite;
+}
+
+@keyframes demoFloat{
+    0%{
+        transform:translateX(-50%) translateY(0);
+        opacity:0.9;
+    }
+    50%{
+        transform:translateX(-50%) translateY(-8px);
+        opacity:1;
+    }
+    100%{
+        transform:translateX(-50%) translateY(0);
+        opacity:0.9;
+    }
+}
+
+
+/* ================= FLOATING HEARTS ================= */
+.heart-float {
+    position: absolute;
+    font-size: 18px;
+    color: #ff5edf;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh) scale(0.5); opacity: 1; }
+    to { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes heartBeat {
+    0% { transform: rotate(-45deg) scale(.84); }
+    50% { transform: rotate(-45deg) scale(0.79); }
+    100% { transform: rotate(-45deg) scale(0.84); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #fff; }
+    to { text-shadow: 0 0 25px #ff9ad5; }
+}
+
+/* ================= MOBILE DESIGN ================= */
+@media (max-width: 600px) {
+    body { padding: 20px; }
+
+    .glass-heart {
+        width: 260px;
+        height: 240px;
+        box-shadow:
+            0 0 40px rgba(255,105,180,0.6),
+            inset 0 0 15px rgba(255,255,255,0.25);
+    }
+
+    .glass-heart::before,
+    .glass-heart::after {
+        width: 220px;
+        height: 240px;
+    }
+
+    .glass-heart::before { top: -120px; left: 0; }
+    .glass-heart::after { top: 0; left: 120px; }
+
+    .content { padding: 14px; gap: 6px; }
+
+    h1 { font-size: 20px; margin-bottom: 4px; line-height: 1.2; }
+    .names { font-size: 15px; margin-bottom: 6px; }
+   h1.message {
+    position: absolute;       /* allow free positioning */
+    bottom: 100%;             /* place above the heart */
+    left: 50%;                /* center horizontally */
+    transform: translateX(-50%) translateY(-20px); /* center & small spacing */
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 210px;
+    text-align: center;
+    color: #fff0f8;
+    text-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+
+    .inner-heart {
+        width: 120px;
+        height: 110px;
+        margin-top: 8px;
+    }
+
+    .inner-heart::before,
+    .inner-heart::after,
+    .inner-heart .inner-body {
+        width: 120px;
+        height: 110px;
+    }
+
+    .inner-heart::before { top: -55px; left: 0; }
+    .inner-heart::after { top: 0; left: 55px; }
+
+    .images {
+        top: 26px;
+        left: 12px;
+        gap: 8px;
+    }
+
+    .images img {
+        width: 50px;
+        height: 50px;
+        border-width: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <div class="demo" id="d"></div>
+    <div class="ribbon ribbon1"></div>
+<div class="ribbon ribbon2"></div>
+<div class="ribbon ribbon3"></div>
+<!-- WAVE LINES BACKGROUND -->
+<div class="wave-lines">
+<svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+  <path d="M0,160 C120,200 240,120 360,140 480,160 600,240 720,220 840,200 960,120 1080,140 1200,160 1320,240 1440,220"
+        fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+  <path d="M0,190 C120,150 240,200 360,180 480,160 600,120 720,140 840,160 960,220 1080,200 1200,180 1320,140 1440,160"
+        fill="none" stroke="rgba(255,105,180,0.35)" stroke-width="2"/>
+</svg>
+</div>
+
+<!-- GLASS HEART -->
+<div class="glass-heart" onclick="chintu()">
+    <div class="content">
+        <h1>नया साल मुबारक हो! 🎉</h1>
+
+        <p class="message">
+        लगती है CUTE रहती हूँ MUTE फिर भी कहते है लोग,
+        "You have so much attitude!" 😄<br><br><br>
+        </p>
+
+        <div class="inner-heart">
+            <div class="inner-body"></div>
+            <div class="images">
+                <img src="https://thumbs.dreamstime.com/b/happy-new-year-robot-s-hand-holds-ai-text-to-start-begin-coming-352769880.jpg" alt="Image1">
+                <img src="https://thumbs.dreamstime.com/b/happy-new-year-happy-new-year-celebration-card-creating-ai-355008350.jpg" alt="Image2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING HEARTS SCRIPT -->
+<script>
+
+let femaleVoice = null;
+// Load voices
+function loadVoices() {
+    const voices = speechSynthesis.getVoices();
+
+    // Try to find a female English voice
+    femaleVoice = voices.find(voice =>
+        voice.name.toLowerCase().includes("female") ||
+        voice.name.toLowerCase().includes("zira") ||     // Windows
+        voice.name.toLowerCase().includes("samantha") || // macOS
+        voice.name.toLowerCase().includes("google")
+    );
+}
+
+// Some browsers load voices late
+speechSynthesis.onvoiceschanged = loadVoices;
+
+function speakText() {
+    const text ="Hey, Happy New Year Dolly.";
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    if (femaleVoice) {
+        speech.voice = femaleVoice;
+    }
+
+    speech.lang = "en-IN";   // Indian accent
+    speech.rate = 1.1;      // little fast
+    speech.pitch = 1.6;     // HIGH pitch = child voice
+    speech.volume = 1;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(speech);
+}
+speakText();
+function floatingHeart() {
+    const h = document.createElement("div");
+    h.className = "heart-float";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (Math.random() * 15 + 15) + "px";
+    h.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 8000);
+}
+setInterval(floatingHeart, 400);
+let count=0;
+function chintu(){
+    count++;
+    //can you give me some romantic lines
+    if(count===1){
+    document.getElementById("d").innerHTML=`<p>I love you Dolly!❤️</p>`;
+    }else if(count===2){
+            document.getElementById("d").innerHTML=`<p>I like you Dolly</p>`;
+    }else if(count===3){
+     document.getElementById("d").innerHTML=`<p>I miss you Dolly</p>`;
+    }else if(count===4){
+            document.getElementById("d").innerHTML=`<p>I kiss Dolly</p>`;
+    }else if(count===5){
+            document.getElementById("d").innerHTML=`<p>you are beautiful.</p>`;
+    }else if(count===6){
+            document.getElementById("d").innerHTML=`<p>You are my sunshine.</p>`;
+    }else if(count===7){
+            document.getElementById("d").innerHTML=`<p>You complete me.</p>`;
+    }else if(count===8){
+            document.getElementById("d").innerHTML=`<p>My heart beats for you.</p>`;
+    }else if(count===9){
+            document.getElementById("d").innerHTML=`<p>You are my everything.</p>`;
+    }else if(count===10){
+            document.getElementById("d").innerHTML=`<p>I adore you.</p>`;
+    }else if(count===11){
+            document.getElementById("d").innerHTML=`<p>You are my dream come true.</p>`;
+    }else if(count===12){
+            document.getElementById("d").innerHTML=`<p>I cherish every moment with you.</p>`;
+    }else if(count===13){
+    window.location.href="last.html";
+    }
+}
+</script>
+
+</body>
+</html>
