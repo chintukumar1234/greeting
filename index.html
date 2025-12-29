@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Star Magic ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    background: radial-gradient(circle at center, #000010, #000000 80%);
+    overflow: hidden;
+    position:relative;
+    font-family: 'Segoe UI', sans-serif;
+    color:white;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+/* RIBBON BACKGROUND */
+.ribbon-bg{
+    position:absolute;
+    width:6px;
+    height:20px;
+    border-radius:3px;
+    pointer-events:none;
+    opacity:0.7;
+    z-index:0;
+}
+h1{
+    position:absolute;
+    top:20px;
+    font-size:2.5rem;
+    font-weight:700;
+    text-align:center;
+    animation: glow 3s infinite alternate;
+    z-index:5;
+}
+p{
+    position:relative;
+    margin-top:80px;
+    margin-bottom:20px;
+    font-size:1.2rem;
+    font-weight:500;
+    text-align:center;
+    max-width:90%;
+    line-height:1.6;
+    z-index:5;
+}
+/* TITLE */
+@keyframes glow{
+    from{ text-shadow:0 0 15px gold, 0 0 25px red; }
+    to{ text-shadow:0 0 30px cyan, 0 0 40px magenta; }
+}
+
+#magicImage{
+    max-width:25%;
+    max-height:70%;
+    border-radius:20px;
+    box-shadow:0 0 60px rgba(255,255,255,0.5);
+    cursor:pointer;
+    position:relative;
+    transition: transform 0.2s;
+    z-index:5;
+}
+
+#magicImage:hover{
+    transform: scale(1.05);
+}
+
+.star{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+        2% 35%, 39% 35%
+    );
+    filter: drop-shadow(0 0 10px currentColor);
+    pointer-events:none;
+}
+
+/* FLOATING TEXTS */
+.floating-text{
+    position:absolute;
+    font-size:1.4rem;
+    font-weight:600;
+    white-space:nowrap;
+    pointer-events:none;
+    opacity:0;
+    animation: floatText 5s linear forwards;
+    z-index:1;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+@keyframes floatText{
+    0%{
+        transform: translateY(30px) scale(0.8);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform: translateY(-120px) scale(1.2);
+        opacity:0;
+    }
+}
+
+.heart {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: floatHeart 2s forwards;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before { top: -9px; left: 0; }
+.heart::after { left: 9px; top: 0; }
+
+@keyframes floatHeart {
+    0% { transform: rotate(-45deg) scale(0); opacity:1; }
+    20% { transform: rotate(-30deg) scale(1.2); }
+    50% { transform: rotate(-60deg) scale(1.4) translateY(-40px) translateX(10px); opacity:0.9; }
+    70% { transform: rotate(-45deg) scale(1.2) translateY(-80px) translateX(-10px); opacity:0.6; }
+    100%{ transform: rotate(-60deg) scale(1) translateY(-120px) translateX(0); opacity:0; }
+}
+
+.ribbon{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    pointer-events:none;
+    animation:glitter 1.2s linear forwards;
+}
+
+@keyframes glitter{
+    from{opacity:1;transform:translateY(0)}
+    to{opacity:0;transform:translateY(50px)}
+}
+
+@media (max-width:600px){
+
+    body{
+        padding:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+    }
+
+    h1{
+        font-size:1.6rem;
+        letter-spacing:1.5px;
+        margin-bottom:8px;
+        position: relative;
+    }
+
+    p{
+        font-size:1.3rem;
+        line-height:1.5;
+        margin:10px auto 0;
+        width:90%;
+        max-width:320px;
+        position:relative;
+    }
+
+    #magicImage{
+        width:90%;
+        max-width:320px;
+        max-height:50vh;
+        border-radius:16px;
+        margin:12px auto;
+    }
+
+    /* ⭐ STARS */
+    .star{
+        width:4px;
+        height:4px;
+    }
+
+    /* ❤️ HEARTS */
+    .heart{
+        width:14px;
+        height:14px;
+    }
+
+    .heart::before,
+    .heart::after{
+        width:14px;
+        height:14px;
+    }
+
+    /* 🎀 RIBBONS */
+    .ribbon-bg{
+        width:4px;
+        height:14px;
+        opacity:0.6;
+    }
+
+    /* 💬 FLOATING TEXT */
+    .floating-text{
+        font-size:0.95rem;
+        max-width:85%;
+        left:7.5%;
+        right:7.5%;
+        text-align:center;
+        line-height:1.4;
+        white-space:normal;
+        padding:6px 10px;
+        border-radius:10px;
+        backdrop-filter:blur(6px);
+        background:rgba(255,255,255,0.12);
+    }
+}
+
+
+</style>
+</head>
+<body>
+<audio id="song" loop>
+  <source src="song.mp3" type="audio/mp3">
+</audio>
+<h1>✨ DABLU & DOLLY ✨</h1>
+<P>
+नया साल आया है, खुशियाँ लाया है,<br>
+तेरे साथ बिताए हर पल को, मैं दिल से सजाया है।<br>
+तेरी हँसी में है जादू, तेरी आँखों में है प्यार,<br>
+इस नए साल में, तुझसे ही है मेरा संसार।<br>
+चलो साथ मिलकर, नए सपनों को सजाएँ,<br>
+तेरे मेरे प्यार की कहानी, हर दिन नया बनाएँ।<br>
+नया साल मुबारक हो, मेरी जान, मेरी रानी,<br>
+तेरे साथ हर लम्हा, है मेरे लिए कहानी।<br>
+</P>
+<img id="magicImage"
+src="https://tse3.mm.bing.net/th/id/OIP.50oUtSgTmjo4T4fKH17BMAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+alt="Happy New Year">
+
+<script>
+/* auto play music */
+const song = document.getElementById("song");
+
+document.addEventListener("click", () => {
+    song.play();
+}, { once: true });
+
+const img = document.getElementById("magicImage");
+
+/* FLOATING STARS */
+function createStar(){
+    const s=document.createElement("div");
+    s.className="star";
+    const size=Math.random()*25+5;
+    s.style.width=s.style.height=size+"px";
+    s.style.color=`hsl(${Math.random()*360},100%,75%)`;
+    let x=Math.random()*window.innerWidth;
+    let y=Math.random()*window.innerHeight;
+    let a=Math.random()*Math.PI*2;
+    document.body.appendChild(s);
+    let life=0;
+    const t=setInterval(()=>{
+        a+=0.03;
+        x+=Math.cos(a)*1.5;
+        y+=Math.sin(a)*1.5;
+        s.style.left=x+"px";
+        s.style.top=y+"px";
+        if(life++>500){clearInterval(t);s.remove();}
+    },30);
+}
+setInterval(createStar,200);
+let count=0;
+/* HEARTS FUNCTION - RANDOM MULTIPLE POSITIONS */
+function createMultipleHeartsRandom(img){
+    const rect = img.getBoundingClientRect();
+    for(let i=0;i<25;i++){
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        const x = rect.left + Math.random() * rect.width;
+        const y = rect.top + Math.random() * rect.height;
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        heart.style.animationDuration = (Math.random() * 0.5 + 0.8) + 's';
+        document.body.appendChild(heart);
+        heart.addEventListener('animationend',()=>heart.remove());
+    }
+    count++;
+    if(count>=5){
+        window.location.href="cou.html";
+    }
+}
+
+/* GLITTER FUNCTION - RANDOM MULTIPLE POSITIONS */
+function glitterRibbonRandom(img){
+    const rect = img.getBoundingClientRect();
+    for(let i=0;i<8;i++){
+        const g=document.createElement("div");
+        g.className="ribbon";
+        const x = rect.left + Math.random() * rect.width;
+        const y = rect.top + Math.random() * rect.height;
+        g.style.left = x + "px";
+        g.style.top = y + "px";
+        g.style.background=`hsl(${Math.random()*360},100%,75%)`;
+        document.body.appendChild(g);
+        setTimeout(()=>g.remove(),1200);
+    }
+}
+
+/* IMAGE CLICK & TOUCH */
+function handleInteraction(){
+    createMultipleHeartsRandom(img);
+    glitterRibbonRandom(img);
+}
+
+img.addEventListener("click", handleInteraction);
+img.addEventListener("touchstart", handleInteraction, {passive:true});
+
+/* -------- RIBBON BACKGROUND DECORATION -------- */
+function createRibbonBackground(){
+    const r = document.createElement('div');
+    r.className='ribbon-bg';
+    r.style.background = `hsl(${Math.random()*360},100%,70%)`;
+    r.style.left = Math.random()*window.innerWidth + 'px';
+    r.style.top = '-20px'; // start above screen
+    r.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(r);
+    
+    let y = -20;
+    const speedY = 1 + Math.random()*2;
+    const sway = Math.random()*2 -1;
+    const id = setInterval(()=>{
+        y += speedY;
+        r.style.top = y + 'px';
+        r.style.left = parseFloat(r.style.left) + sway + 'px';
+        if(y > window.innerHeight + 20){
+            clearInterval(id);
+            r.remove();
+        }
+    },20);
+}
+
+// Continuously create ribbons in background
+setInterval(createRibbonBackground, 100);
+/* FLOATING ROMANTIC TEXTS */
+const messages = [
+    "❤️ Love",
+    "💕 Forever",
+    "✨ Happy New Year",
+    "💫 You & Me",
+    "🌹 My Heart",
+    "💖 Always",
+
+    // Romantic
+    "😍 My Love",
+    "💞 Soulmate",
+    "💘 Be Mine",
+    "🥰 My Everything",
+    "💓 True Love",
+    "💍 Forever Us",
+
+    // Cute / Sweet
+    "😊 Smile",
+    "😘 Kiss",
+    "🤗 Hug",
+    "💝 Special One",
+    "💌 For You",
+    "🌸 Sweet Heart",
+
+    // New Year vibes
+    "🎉 New Beginnings",
+    "🎆 Cheers 2025",
+    "✨ New Dreams",
+    "🥂 Celebrate Love",
+    "🎊 Magical Night",
+
+    // Emotional
+    "🌈 Together Always",
+    "💫 Destiny",
+    "❤️ Endless Love",
+    "🌹 Only You",
+    "💖 My World"
+];
+
+
+function createFloatingText(){
+    const text = document.createElement("div");
+    text.className = "floating-text";
+    text.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+    text.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    text.style.top = window.innerHeight + "px";
+    text.style.color = `hsl(${Math.random()*360},100%,75%)`;
+
+    document.body.appendChild(text);
+
+    setTimeout(()=>text.remove(), 5000);
+}
+
+// create floating text every 2.5 seconds
+setInterval(createFloatingText, 2500);
+
+</script>
+
+</body>
+</html>
