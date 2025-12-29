@@ -270,6 +270,32 @@ p.message {
     to { text-shadow: 0 0 25px #ff9ad5; }
 }
 
+.star{
+    position:absolute;
+    font-size:22px;
+    pointer-events:none;
+    animation:explode 1.2s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes explode{
+    from{
+        transform:translate(0,0) scale(0.6);
+        opacity:1;
+    }
+    to{
+        transform:translate(var(--x),var(--y)) scale(1.6);
+        opacity:0;
+    }
+}
+
+.glow{
+    filter:
+        drop-shadow(0 0 10px gold)
+        drop-shadow(0 0 25px hotpink)
+        drop-shadow(0 0 40px #ff5edf);
+}
+
 /* ================= MOBILE DESIGN ================= */
 @media (max-width: 600px) {
     body { padding: 20px; }
@@ -455,7 +481,43 @@ function chintu(){
     window.location.href="last.html";
     }
 }
-</script>
 
+const stars = ["⭐","✨","🌟","💫","🎇","🔥"];
+
+function createStarAround(element){
+    const rect = element.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const startRadius = Math.max(rect.width, rect.height) / 2 + 20;
+
+    for(let i = 0; i < 24; i++){
+        const s = document.createElement("div");
+        s.className = "star glow";
+        s.innerHTML = stars[Math.floor(Math.random()*stars.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+
+        /* 🔥 START POINT (outside object) */
+        const startX = centerX + Math.cos(angle) * startRadius;
+        const startY = centerY + Math.sin(angle) * startRadius;
+
+        s.style.left = startX + "px";
+        s.style.top  = startY + "px";
+
+        /* 🔥 EXPLODE OUTWARD */
+        const distance = Math.random() * 120 + 60;
+        s.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        s.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),1200);
+    }
+}
+document.querySelector(".glass-heart").addEventListener("click",function(){
+    createStarAround(this);
+});
+</script>
 </body>
 </html>
