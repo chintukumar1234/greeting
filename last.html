@@ -111,7 +111,7 @@ body{
 }
 .happy{
     display: flex;
-    font-size: 70px;
+    font-size: 40px;
     animation: heartPulse 1.4s infinite;
     justify-content: center;
     align-items: center;
@@ -210,7 +210,7 @@ body{
     .couple-images img{ width:72px; height:72px; }
     .big-photo{ height:140px; }
     .happy{ 
-        font-size: 24px;
+        font-size: 15px;
         display: flex;
      }
 }
@@ -257,14 +257,25 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
-let count=0;
+let count = 0;
 function chintu(){
     count++;
-    if(count===1){
-        document.body.innerHTML=`<div class='happy' onclick="createStarAround(this)">एक बार फिर हैप्पी न्यू ईयर डॉली</div>`;
-        count=0;
+    if(count === 1){
+
+        document.body.innerHTML =
+        `<div class='happy' id="happyText">एक बार फिर हैप्पी न्यू ईयर डॉली</div>`;
+
+        const text = document.getElementById("happyText");
+
+        /* 🔥 START CONTINUOUS FIREWORKS */
+        fireworkInterval = setInterval(()=>{
+            createStarAround(text);
+        }, 900);
+
+        count = 0;
     }
 }
+
 const stars = ["⭐","✨","🌟","💫","🎇","🔥"];
 
 function createStarAround(element){
