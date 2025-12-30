@@ -210,7 +210,7 @@ body{
     .couple-images img{ width:72px; height:72px; }
     .big-photo{ height:140px; }
     .happy{ 
-        font-size: 15px;
+        font-size: 19px;
         display: flex;
      }
 }
@@ -266,15 +266,14 @@ function chintu(){
         `<div class='happy' id="happyText">एक बार फिर हैप्पी न्यू ईयर डॉली</div>`;
 
         const text = document.getElementById("happyText");
-
-        /* 🔥 START CONTINUOUS FIREWORKS */
-        fireworkInterval = setInterval(()=>{
             createStarAround(text);
-        }, 900);
+
 
         count = 0;
     }
 }
+
+
 
 const stars = ["⭐","✨","🌟","💫","🎇","🔥"];
 
