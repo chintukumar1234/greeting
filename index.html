@@ -1,427 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" 
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Star Magic ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyView Drone Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;background:#050816;color:#fff;overflow-x:hidden}
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    background: radial-gradient(circle at center, #000010, #000000 80%);
-    overflow: hidden;
-    position:relative;
-    font-family: 'Segoe UI', sans-serif;
-    color:white;
-    flex-direction: column;
-    width: 100%;
-
-}
-
-/* RIBBON BACKGROUND */
-.ribbon-bg{
-    position:absolute;
-    width:6px;
-    height:20px;
-    border-radius:3px;
-    pointer-events:none;
-    opacity:0.7;
-    z-index:0;
-}
-h1{
-    position:absolute;
-    top:20px;
-    font-size:2.5rem;
-    font-weight:700;
-    text-align:center;
-    animation: glow 3s infinite alternate;
-    z-index:5;
-}
-p{
-    position:relative;
-    margin-top:80px;
-    margin-bottom:20px;
-    font-size:1.2rem;
-    font-weight:500;
-    text-align:center;
-    max-width:90%;
-    line-height:1.6;
-    z-index:5;
-}
-/* TITLE */
-@keyframes glow{
-    from{ text-shadow:0 0 15px gold, 0 0 25px red; }
-    to{ text-shadow:0 0 30px cyan, 0 0 40px magenta; }
-}
-
-#magicImage{
-    max-width:25%;
-    max-height:70%;
-    border-radius:20px;
-    box-shadow:0 0 60px rgba(255,255,255,0.5);
-    cursor:pointer;
-    position:relative;
-    transition: transform 0.2s;
-    z-index:5;
-}
-
-#magicImage:hover{
-    transform: scale(1.05);
-}
-
-.star{
-    position:absolute;
-    width:8px;
-    height:8px;
-    background:white;
-    clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%, 68% 57%,
-        79% 91%, 50% 70%, 21% 91%, 32% 57%,
-        2% 35%, 39% 35%
-    );
-    filter: drop-shadow(0 0 10px currentColor);
-    pointer-events:none;
-}
-
-/* FLOATING TEXTS */
-.floating-text{
-    position:absolute;
-    font-size:1.4rem;
-    font-weight:600;
-    white-space:nowrap;
-    pointer-events:none;
-    opacity:0;
-    animation: floatText 5s linear forwards;
-    z-index:1;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-
-@keyframes floatText{
-    0%{
-        transform: translateY(30px) scale(0.8);
-        opacity:0;
+    /* HERO */
+    header{
+      height:100vh;
+      background:linear-gradient(120deg,rgba(0,0,0,.7),rgba(0,0,0,.4));
+      display:flex;align-items:center;justify-content:center;text-align:center
     }
-    20%{
-        opacity:1;
-    }
-    100%{
-        transform: translateY(-120px) scale(1.2);
-        opacity:0;
-    }
-}
+    header h1{font-size:3.5rem;font-weight:700;letter-spacing:1px}
+    header p{font-size:1.3rem;margin:20px 0;color:#ddd}
+    header a{display:inline-block;margin-top:10px;padding:14px 40px;background:linear-gradient(45deg,#ff9800,#ff5722);color:#000;text-decoration:none;border-radius:40px;font-weight:600}
 
-.heart {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: red;
-    transform: rotate(-45deg);
-    animation: floatHeart 2s forwards;
-    pointer-events: none;
-    z-index: 5;
-}
+    section{padding:90px 8%}
+    h2{text-align:center;font-size:2.5rem;margin-bottom:50px}
 
-.heart::before,
-.heart::after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: red;
-    border-radius: 50%;
-}
-
-.heart::before { top: -9px; left: 0; }
-.heart::after { left: 9px; top: 0; }
-
-@keyframes floatHeart {
-    0% { transform: rotate(-45deg) scale(0); opacity:1; }
-    20% { transform: rotate(-30deg) scale(1.2); }
-    50% { transform: rotate(-60deg) scale(1.4) translateY(-40px) translateX(10px); opacity:0.9; }
-    70% { transform: rotate(-45deg) scale(1.2) translateY(-80px) translateX(-10px); opacity:0.6; }
-    100%{ transform: rotate(-60deg) scale(1) translateY(-120px) translateX(0); opacity:0; }
-}
-
-.ribbon{
-    position:absolute;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    pointer-events:none;
-    animation:glitter 1.2s linear forwards;
-}
-
-@keyframes glitter{
-    from{opacity:1;transform:translateY(0)}
-    to{opacity:0;transform:translateY(50px)}
-}
-
-@media (max-width:600px){
-
-    body{
-        padding:0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
+    #message1, #message2, #message3, #message4,#message5 {
+        color:red;
     }
 
-    h1{
-        font-size:1.6rem;
-        letter-spacing:1.5px;
-        margin-bottom:8px;
-        position: relative;
-    }
+    /* ABOUT */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .about img{width:100%;border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+    .about p{font-size:1.05rem;color:#ccc;line-height:1.8}
 
-    p{
-        font-size:1.3rem;
-        line-height:1.5;
-        margin:10px auto 0;
-        width:90%;
-        max-width:320px;
-        position:relative;
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:35px}
+    .card{
+      background:linear-gradient(180deg,#0d1328,#0a0f22);
+      padding:35px;border-radius:25px;
+      box-shadow:0 15px 35px rgba(0,0,0,.5);
+      transition:.4s
     }
+    .book{
+  animation: heatpump 2s infinite;
+}
 
-    #magicImage{
-        width:90%;
-        max-width:320px;
-        max-height:50vh;
-        border-radius:16px;
-        margin:12px auto;
-    }
-
-    /* ⭐ STARS */
-    .star{
-        width:4px;
-        height:4px;
-    }
-
-    /* ❤️ HEARTS */
-    .heart{
-        width:14px;
-        height:14px;
-    }
-
-    .heart::before,
-    .heart::after{
-        width:14px;
-        height:14px;
-    }
-
-    /* 🎀 RIBBONS */
-    .ribbon-bg{
-        width:4px;
-        height:14px;
-        opacity:0.6;
-    }
-
-    /* 💬 FLOATING TEXT */
-    .floating-text{
-        font-size:0.95rem;
-        max-width:85%;
-        left:7.5%;
-        right:7.5%;
-        text-align:center;
-        line-height:1.4;
-        white-space:normal;
-        padding:6px 10px;
-        border-radius:10px;
-        backdrop-filter:blur(6px);
-        background:rgba(255,255,255,0.12);
-    }
+@keyframes heatpump{
+  0%{ transform: scale(1.3); }
+  50%{ transform: scale(1.1); }
+  100%{ transform: scale(1.3); }
 }
 
 
-</style>
+    .card:hover{transform:translateY(-10px)}
+    .card h3{color:#ff9800;margin-bottom:15px}
+    .card p{color:#bbb}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+    .gallery img{width:100%;border-radius:20px;transition:.4s}
+    .gallery img:hover{transform:scale(1.05)}
+
+    /* CONTACT */
+    .contact{text-align:center}
+    .contact p{color:#bbb;margin-bottom:20px}
+    .contact input,.contact textarea{
+      width:100%;max-width:520px;padding:14px;margin:10px auto;
+      border:none;border-radius:14px;background:#0d1328;color:#fff
+    }
+    .contact button{
+      margin-top:20px;padding:14px 45px;border:none;border-radius:40px;
+      background:linear-gradient(45deg,#ff9800,#ff5722);
+      font-weight:600;cursor:pointer
+    }
+
+    footer{padding:35px;text-align:center;background:#02030f;color:#777}
+
+    @media(max-width:900px){
+      header h1{
+        font-size:2.4rem}
+      .about{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-<audio id="song" loop>
-  <source src="song.mp3" type="audio/mp3">
-</audio>
-<h1>✨ DABLU & DOLLY ✨</h1>
-<P>
-नया साल आया है, खुशियाँ लाया है,<br>
-तेरे साथ बिताए हर पल को, मैं दिल से सजाया है।<br>
-तेरी हँसी में है जादू, तेरी आँखों में है प्यार,<br>
-इस नए साल में, तुझसे ही है मेरा संसार।<br>
-चलो साथ मिलकर, नए सपनों को सजाएँ,<br>
-तेरे मेरे प्यार की कहानी, हर दिन नया बनाएँ।<br>
-नया साल मुबारक हो, मेरी जान, मेरी रानी,<br>
-तेरे साथ हर लम्हा, है मेरे लिए कहानी।<br>
-</P>
-<img id="magicImage"
-src="https://tse3.mm.bing.net/th/id/OIP.50oUtSgTmjo4T4fKH17BMAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
-alt="Happy New Year">
+<header>
+  <div>
+    <h1>SkyView Drone Photography</h1>
+    <p>Cinematic Aerial Photos & Videos That Tell Stories</p>
+    <a class="book" href="#contact">Book Now</a>
+  </div>
+</header>
 
-<script>
-/* auto play music */
-const song = document.getElementById("song");
+<section class="about">
+  <div>
+    <h2>About Me</h2>
+    <p>I am Er Chintu kumar a professional drone photographer delivering cinematic aerial photography and 4K videography. From luxury real estate to weddings and commercial projects, I capture breathtaking perspectives from the sky.</p>
+  </div>
+  <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=900&q=80" alt="Drone">
+</section>
 
-document.addEventListener("click", () => {
-    song.play();
-}, { once: true });
+<section>
+  <h2>My Services</h2>
+  <div class="services">
+    <div class="card"><h3>🏠 Real Estate</h3><p>Premium aerial shots to sell properties faster.</p></div>
+    <div class="card"><h3>💍 Weddings & Events</h3><p>Memorable cinematic coverage from the sky.</p></div>
+    <div class="card"><h3>🏢 Commercial</h3><p>Brand promotion, ads, and corporate visuals.</p></div>
+    <div class="card"><h3>🌾 Agriculture</h3><p>Crop monitoring, surveys, and land inspection.</p></div>
+  </div>
+</section>
 
-const img = document.getElementById("magicImage");
+<section>
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="data:image/webp;base64,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" alt="Drone Camera View">
+    <img src="https://images.pexels.com/photos/997130/pexels-photo-997130.jpeg?cs=srgb&dl=blur-close-up-dawn-997130.jpg&fm=jpg" alt="Aerial Landscape">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Mountain Aerial Shot">
+    <img src="https://th.bing.com/th/id/OIP.tkeF09MAbejdXduHHxCL5QHaE8?w=306&h=204&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Drone Flying Shot">
+  </div>
+</section>
 
-/* FLOATING STARS */
-function createStar(){
-    const s=document.createElement("div");
-    s.className="star";
-    const size=Math.random()*25+5;
-    s.style.width=s.style.height=size+"px";
-    s.style.color=`hsl(${Math.random()*360},100%,75%)`;
-    let x=Math.random()*window.innerWidth;
-    let y=Math.random()*window.innerHeight;
-    let a=Math.random()*Math.PI*2;
-    document.body.appendChild(s);
-    let life=0;
-    const t=setInterval(()=>{
-        a+=0.03;
-        x+=Math.cos(a)*1.5;
-        y+=Math.sin(a)*1.5;
-        s.style.left=x+"px";
-        s.style.top=y+"px";
-        if(life++>500){clearInterval(t);s.remove();}
-    },30);
-}
-setInterval(createStar,200);
-let count=0;
-/* HEARTS FUNCTION - RANDOM MULTIPLE POSITIONS */
-function createMultipleHeartsRandom(img){
-    const rect = img.getBoundingClientRect();
-    for(let i=0;i<25;i++){
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        const x = rect.left + Math.random() * rect.width;
-        const y = rect.top + Math.random() * rect.height;
-        heart.style.left = x + 'px';
-        heart.style.top = y + 'px';
-        heart.style.animationDuration = (Math.random() * 0.5 + 0.8) + 's';
-        document.body.appendChild(heart);
-        heart.addEventListener('animationend',()=>heart.remove());
-    }
-    count++;
-    if(count>=5){
-        window.location.href="cou.html";
-    }
-}
+<section id="contact" class="contact">
+  <h2>Contact & Booking</h2>
+  <input type="text" id="name" placeholder="Your Name">
+  <div id="message1"></div>
+  <input type="tel" id="mobile" placeholder="Mobile Number">
+  <div id="message2"></div>
+  <input style="color:#8d8d8f" type="date" id="date" placeholder="Select date" >
+  <div id="message3"></div>
+  <input type="address" id="address" placeholder="Enter the address">
+  <div id="message4"></div>
+  <textarea rows="4" id="pro" placeholder="Project Details"></textarea>
+  <div id="message5"></div>
+  <br>
+  <button onclick="chintu()">Final Submit</button>
+</section>
 
-/* GLITTER FUNCTION - RANDOM MULTIPLE POSITIONS */
-function glitterRibbonRandom(img){
-    const rect = img.getBoundingClientRect();
-    for(let i=0;i<8;i++){
-        const g=document.createElement("div");
-        g.className="ribbon";
-        const x = rect.left + Math.random() * rect.width;
-        const y = rect.top + Math.random() * rect.height;
-        g.style.left = x + "px";
-        g.style.top = y + "px";
-        g.style.background=`hsl(${Math.random()*360},100%,75%)`;
-        document.body.appendChild(g);
-        setTimeout(()=>g.remove(),1200);
-    }
-}
-
-/* IMAGE CLICK & TOUCH */
-function handleInteraction(){
-    createMultipleHeartsRandom(img);
-    glitterRibbonRandom(img);
-}
-
-img.addEventListener("click", handleInteraction);
-img.addEventListener("touchstart", handleInteraction, {passive:true});
-
-/* -------- RIBBON BACKGROUND DECORATION -------- */
-function createRibbonBackground(){
-    const r = document.createElement('div');
-    r.className='ribbon-bg';
-    r.style.background = `hsl(${Math.random()*360},100%,70%)`;
-    r.style.left = Math.random()*window.innerWidth + 'px';
-    r.style.top = '-20px'; // start above screen
-    r.style.transform = `rotate(${Math.random()*360}deg)`;
-    document.body.appendChild(r);
-    
-    let y = -20;
-    const speedY = 1 + Math.random()*2;
-    const sway = Math.random()*2 -1;
-    const id = setInterval(()=>{
-        y += speedY;
-        r.style.top = y + 'px';
-        r.style.left = parseFloat(r.style.left) + sway + 'px';
-        if(y > window.innerHeight + 20){
-            clearInterval(id);
-            r.remove();
-        }
-    },20);
-}
-
-// Continuously create ribbons in background
-setInterval(createRibbonBackground, 100);
-/* FLOATING ROMANTIC TEXTS */
-const messages = [
-    "❤️ Love",
-    "💕 Forever",
-    "✨ Happy New Year",
-    "💫 You & Me",
-    "🌹 My Heart",
-    "💖 Always",
-
-    // Romantic
-    "😍 My Love",
-    "💞 Soulmate",
-    "💘 Be Mine",
-    "🥰 My Everything",
-    "💓 True Love",
-    "💍 Forever Us",
-
-    // Cute / Sweet
-    "😊 Smile",
-    "😘 Kiss",
-    "🤗 Hug",
-    "💝 Special One",
-    "💌 For You",
-    "🌸 Sweet Heart",
-
-    // New Year vibes
-    "🎉 New Beginnings",
-    "🎆 Cheers 2025",
-    "✨ New Dreams",
-    "🥂 Celebrate Love",
-    "🎊 Magical Night",
-
-    // Emotional
-    "🌈 Together Always",
-    "💫 Destiny",
-    "❤️ Endless Love",
-    "🌹 Only You",
-    "💖 My World"
-];
-
-
-function createFloatingText(){
-    const text = document.createElement("div");
-    text.className = "floating-text";
-    text.innerText = messages[Math.floor(Math.random() * messages.length)];
-
-    text.style.left = Math.random() * (window.innerWidth - 120) + "px";
-    text.style.top = window.innerHeight + "px";
-    text.style.color = `hsl(${Math.random()*360},100%,75%)`;
-
-    document.body.appendChild(text);
-
-    setTimeout(()=>text.remove(), 5000);
-}
-
-// create floating text every 2.5 seconds
-setInterval(createFloatingText, 2500);
-
-</script>
-
+<footer>
+  <p>© 2026 SkyView Drone Photography | Designed for Aerial Professionals</p>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
